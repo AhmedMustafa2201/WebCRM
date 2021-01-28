@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>@ViewBag.Title - ABC co. Demo Application</title>
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Scripts.Render("~/bundles/jqueryDataTables")
+    @Scripts.Render("~/bundles/fullCalendar")
+
+    @RenderSection("scripts", required: false)
+
+    <style>
+        #wpf-loader-two {
+          height: 100%;
+          bottom: 0;
+          left: 0;
+          position: fixed;
+          right: 0;
+          top: 0;
+          width: 100%;
+          z-index: 99999;
+        }
+        
+        #wpf-loader-two .wpf-loader-two-inner {
+          border: 2px solid #fff;
+          border-radius: 50%;
+          height: 100px;
+          left: 46%;
+          position: absolute;
+          top: 40%;
+          width: 100px;
+          text-align: center;
+        }
+        
+        #wpf-loader-two .wpf-loader-two-inner:before {
+          content: "";
+          height: 57%;
+          left: -204px;
+          position: absolute;
+          top: -5px;
+          transition: all 0.5s ease 0s;
+          width: 200px;
+          -webkit-animation-name: loader-two-before-transition;
+          -webkit-animation-duration: 1.5s;
+          -webkit-animation-timing-function: linear;
+          -webkit-animation-iteration-count: infinite;
+          animation-name: loader-two-before-transition;
+          animation-duration: 1.5s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+        }
+        
+        #wpf-loader-two .wpf-loader-two-inner:after {
+          content: "";
+          height: 57%;
+          left: 104%;
+          position: absolute;
+          top: 50%;
+          transition: all 0.5s ease 0s;
+          width: 200px;
+          -webkit-animation-name: loader-two-after-transition;
+          -webkit-animation-duration: 1.5s;
+          -webkit-animation-timing-function: linear;
+          -webkit-animation-iteration-count: infinite;
+          animation-name: loader-two-after-transition;
+          animation-duration: 1.5s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+        }
+        
+        #wpf-loader-two .wpf-loader-two-inner span {
+          color: #fff;
+          display: inline-block;
+          margin-top: 42%;
+        }
+        #wpf-loader-two .wpf-loader-two-inner:before {
+          background: black  
+        }
+        #wpf-loader-two .wpf-loader-two-inner:after {
+          background: black;  
+        }
+        #wpf-loader-two {
+          background-color: black;  
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        jQuery(window).load(function () { // makes sure the whole site is loaded      
+            jQuery('#wpf-loader-two').delay(200).fadeOut('slow'); // will fade out      
+        })
+
+    </script>
+    <div id="wpf-loader-two">
+        <div class="wpf-loader-two-inner">
+            <span>Loading</span>
+            <span>Please wait...</span>
+        </div>
+    </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("ABC co. App", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Customers", "Index", "Companies")</li>
+                    <li>@Html.ActionLink("Contacts", "Index", "Contacts")</li>
+                    <li>@Html.ActionLink("Activities", "Index", "ActivityHistories")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="margin-bottom-10px"></div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer style="text-align:center">
+            <p>&copy; @DateTime.Now.Year - ABC co. Demo Application - Ahmed Mustafa, Mohammed Khalid</p>
+        </footer>
+    </div>
+</body>
+</html>
